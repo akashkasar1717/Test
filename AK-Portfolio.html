@@ -2038,7 +2038,7 @@ a {
 .text{
     font-size: 20px;
     padding-left: 20px;
-    margin-top: 13%;
+    margin-top: 5%;
   }
 
 .container{
@@ -2079,45 +2079,70 @@ a {
 
 <script>
 function downloadMyFile(){
-alert('hi')
+       document.getElementById('Resume').addEventListener('click', function() {
+            var link = document.createElement('a');
+            link.setAttribute('href', 'Images/AkashKasarResume.pdf');
+            link.setAttribute('download', 'AkashKasarResume.pdf');
+            link.setAttribute('target', '_blank');
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
 }
 
-function mySidebarFunction(text){
-alert('hello')
+window.addEventListener('resize', function() {
+if (window.innerWidth <= 600) {
+	var nav = document.getElementById('clickButton');
+	var navmartop = document.getElementById('clickButton');
+	var anchorElements = nav.getElementsByTagName('a');
+	navmartop.style.marginTop = '14%';
+
+	for (var i = 0; i < anchorElements.length; i++) {
+	    anchorElements[i].style.display = 'block';
+	}
 }
+
+if (window.innerWidth >= 600) {
+	var nav = document.getElementById('clickButton');
+	var navmartop = document.getElementById('clickButton');
+	var anchorElements = nav.getElementsByTagName('a');
+	navmartop.style.marginTop = '0%';
+	for (var i = 0; i < anchorElements.length; i++) {
+	    anchorElements[i].style.display = 'none';
+	}
+}
+
+});
 </script>
 
 </head>
 
 <body style="margin: 0;">
-<div class="w3-top">
+
+<div class="w3-top" id="martop">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
       <img src="Images/AK_Logo.jpg" width="60" height="60" class="w3-bar-item w3-button w3-wide" />
       <h4 class="w3-bar-item w3-button w3-wide">Portfolio</h4>
       <div class="w3-right w3-hide-small">
-        <a href="#about" class="w3-bar-item w3-button" style="margin-top: 4%;">HOME</a>
-        <a href="#about" class="w3-bar-item w3-button" style="margin-top: 4%;">ABOUT</a>
-        <a href="#team" class="w3-bar-item w3-button" style="margin-top: 4%;">SKILLS</a>
-        <a href="#work" class="w3-bar-item w3-button" style="margin-top: 4%;">EXPERIENCE</a>
-        <a href="#pricing" class="w3-bar-item w3-button" style="margin-top: 4%;">CERTIFICATIONS</a>
-        <a href="#contact" class="w3-bar-item w3-button" style="margin-top: 4%;">CONTACT</a>
+        <a href="#about" class="w3-bar-item w3-button" style="margin-top: 2%;">HOME</a>
+        <a href="#about" class="w3-bar-item w3-button" style="margin-top: 2%;">ABOUT</a>
+        <a href="#team" class="w3-bar-item w3-button" style="margin-top: 2%;">SKILLS</a>
+        <a href="#work" class="w3-bar-item w3-button" style="margin-top: 2%;">EXPERIENCE</a>
+        <a href="#pricing" class="w3-bar-item w3-button" style="margin-top: 2%;">CERTIFICATIONS</a>
+        <a href="#contact" class="w3-bar-item w3-button" style="margin-top: 2%;">CONTACT</a>
       </div>
-  
-      <a href="" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" style="margin-top: 4%;">
-        <i class="fa fa-bars" onclick="mySidebarFunction('block')"></i>
-      </a>
     </div>
   </div>
   
-  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" [style.display]="{mySideBarVal}">
-    <a href=""  class="w3-bar-item w3-button w3-large w3-padding-16" onclick="mySidebarFunction('none')" style="margin-top: 5%;">Close ×</a>
+  <div class="" id="clickButton">
     <a href="#about" class="w3-bar-item w3-button">HOME</a>
     <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
     <a href="#team" class="w3-bar-item w3-button">SKILLS</a>
     <a href="#work" class="w3-bar-item w3-button">EXPERIENCE</a>
     <a href="#pricing" class="w3-bar-item w3-button">CERTIFICATIONS</a>
     <a href="#contact" class="w3-bar-item w3-button" style="margin-bottom: 1%;">CONTACT</a>
-  </nav>
+  </div>
 
 <section>
     <div class="w3-container w3-light-grey w3-padding-64 container" style="padding:128px 16px" id="about">
@@ -2157,7 +2182,7 @@ alert('hello')
           Passionate about staying updated with the latest technologies and continuously improving coding practices. Seeking
           opportunities to leverage my expertise in Java development to contribute to dynamic and forward-thinking projects.
         </p>
-        <a onclick="downloadMyFile()"><b style="color: blue; cursor: pointer;">Download Resume</b></a>
+        <a onclick="downloadMyFile()" id="Resume"><b style="color: blue; cursor: pointer;">Download Resume</b></a>
       </div>
     </div>
   </div>
